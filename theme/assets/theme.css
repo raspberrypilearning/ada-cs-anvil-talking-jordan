@@ -2,10 +2,12 @@
   --skin-color: #edad7d; /* Matches Jordan's skin tone exactly */
   --mouth-dark: #6b202f; /* Deep red mouth interior */
   --tongue-color: #d6556e;
+  font-size: 16px;
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /*font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
+  font-family: poppins,sans-serif,Arial,Helvetica Neue,Helvetica,sans-serif!important;
   background: #f0f4f8;
   display: flex;
   flex-direction: column;
