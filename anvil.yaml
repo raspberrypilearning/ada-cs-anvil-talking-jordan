@@ -3,7 +3,7 @@ correct_dependency_ids: {}
 dependencies: []
 metadata: {description: Jordan introduces himself., logo_img: 'asset:jordan.png', title: Talking Jordan}
 name: Talking Jordan
-package_name: Simple_Button_with_JavaScript_DONT_DELETE
+package_name: Ada_CS_Talking_Jordan
 runtime_options:
   client_version: '3'
   legacy_features: {bootstrap3: true, class_names: true}
