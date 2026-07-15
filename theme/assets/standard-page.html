@@ -1,17 +1,70 @@
-<div class="container">
-  <div class="box">
-    <h2>Custom HTML Template</h2>
-    <p>This is a minimal Anvil CustomHTML form. Click the button to test JavaScript is working.</p>
-    <button onclick="handleClick()">Click me</button>
-    <div id="message"></div>
-  </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jordan the Cyclist Speaks!</title>
+  </head>
+  <body>
 
-<script>
-  let count = 0;
+    <div class="container">
+      <div class="avatar-container">
+        <img class="avatar-img" src="_/theme/jordan.png" alt="Jordan the Cyclist">
+        <div class="mouth-cover"></div>
+        <div id="mouth" class="moving-mouth"></div>
+      </div>
 
-  function handleClick() {
-    count++;
-    document.getElementById('message').textContent = 'Button clicked ' + count + ' time(s)!';
-  }
-</script>
+      <div id="bubble" class="speech-bubble">
+        <div id="text" class="text-content"></div>
+      </div>
+    </div>
+
+    <button id="talkBtn" onclick="startSpeech()">Click to Talk</button>
+
+    <script>
+      const speechText = "Hi there, my name is Jordan. I am a keen cyclist and am currently in training to compete internationally, hopefully one day I'll be good enough to represent my country in the Olympic Games!";
+
+      const mouth = document.getElementById('mouth');
+      const bubble = document.getElementById('bubble');
+      const textField = document.getElementById('text');
+      const btn = document.getElementById('talkBtn');
+
+      let isSpeaking = false;
+
+      function startSpeech() {
+        if (isSpeaking) return; // Prevent spamming
+        isSpeaking = true;
+        btn.disabled = true;
+        btn.style.opacity = 0.5;
+
+        // Show speech bubble
+        bubble.classList.add('active');
+        textField.innerHTML = '';
+
+        // Start mouth animation
+        mouth.classList.add('talking');
+
+        let index = 0;
+
+        function typeLetter() {
+          if (index < speechText.length) {
+            textField.innerHTML += speechText.charAt(index);
+            index++;
+
+            // Slightly randomize typing speed for realism (between 25ms and 60ms)
+            const randomDelay = Math.random() * (60 - 25) + 25;
+            setTimeout(typeLetter, randomDelay);
+          } else {
+            // Stop talking animation when typing finishes
+            mouth.classList.remove('talking');
+            btn.disabled = false;
+            btn.style.opacity = 1;
+            isSpeaking = false;
+          }
+        }
+
+        typeLetter();
+      }
+    </script>
+  </body>
+</html>
